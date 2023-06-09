@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+int sortedSearch(int srtArr[],int srtArrSize,int val);
+int main(){
+    int srtArr[10]={1,3,5,7,9,11,13,15,1};
+    cout << sortedSearch(srtArr,10,13)<< endl;//existing number
+    cout << sortedSearch(srtArr,10,154)<< endl;//non existing
+    return 0;
+}
+int sortedSearch(int srtArr[],int srtArrSize,int val){
+    int low,high,mid;
+    int ind;
+    bool found;
+    low=0;
+    high=srtArrSize-1;
+    found=false;
+    while((found == false)&&(low<=high)){
+        mid=(low+high)/2;
+        if(srtArr[mid]== val){
+            ind=mid;
+            found=true;
+}
+else if(val<srtArr[mid])
+high=mid-1;
+else // val>srtArr[mid]
+low=mid+1;
+}
+if(found=true)
+return ind;
+else
+return -1;
+}
